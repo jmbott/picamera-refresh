@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>test captures</title>
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+    <script src='/socket.io/socket.io.js'></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+    <div class="row">
+      <div class="column">
+        <img src="tmp0.jpg" style="width:100%">
+      </div>
+      <div class="column">
+        <img src="tmp1.jpg" style="width:100%">
+      </div>
+    </div>
+
+    <button type="button" class="button" onclick="this.classList.toggle('button--loading'); takePics()">
+        <span class="button__text">Refresh Pictures</span>
+    </button>
+
+    <script>
+      function takePics() {
+        socket.emit("takePics", [0, 1]);
+        // $.get('/takePics', { camera : [0, 1] });
+      };
+
+      var socket = io();
+      socket.on("refresh", () => {
+        location.reload();
+        console.log("page refreshed");
+        return false;
+      });
+    </script>
+
+  </body>
+</html>
