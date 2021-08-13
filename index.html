@@ -4,7 +4,6 @@
 
   <head>
     <title>test captures</title>
-    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
     <script src='/socket.io/socket.io.js'></script>
     <link rel="stylesheet" href="style.css">
   </head>
@@ -27,7 +26,6 @@
     <script>
       function takePics() {
         socket.emit("takePics", [0, 1]);
-        // $.get('/takePics', { camera : [0, 1] });
       };
 
       var socket = io();
